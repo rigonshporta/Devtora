@@ -1,18 +1,18 @@
-import PostFeed from '@components/PostFeed';
-import Metatags from '@components/Metatags';
-import Loader from '@components/Loader';
-import { firestore, fromMillis, postToJSON } from '@lib/firebase';
+import PostFeed from "@components/PostFeed";
+import Metatags from "@components/Metatags";
+import Loader from "@components/Loader";
+import { firestore, fromMillis, postToJSON } from "@lib/firebase";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 // Max post to query per page
 const LIMIT = 10;
 
 export async function getServerSideProps(context) {
   const postsQuery = firestore
-    .collectionGroup('posts')
-    .where('published', '==', true)
-    .orderBy('createdAt', 'desc')
+    .collectionGroup("posts")
+    .where("published", "==", true)
+    .orderBy("createdAt", "desc")
     .limit(LIMIT);
 
   const posts = (await postsQuery.get()).docs.map(postToJSON);
@@ -33,12 +33,15 @@ export default function Home(props) {
     setLoading(true);
     const last = posts[posts.length - 1];
 
-    const cursor = typeof last.createdAt === 'number' ? fromMillis(last.createdAt) : last.createdAt;
+    const cursor =
+      typeof last.createdAt === "number"
+        ? fromMillis(last.createdAt)
+        : last.createdAt;
 
     const query = firestore
-      .collectionGroup('posts')
-      .where('published', '==', true)
-      .orderBy('createdAt', 'desc')
+      .collectionGroup("posts")
+      .where("published", "==", true)
+      .orderBy("createdAt", "desc")
       .startAfter(cursor)
       .limit(LIMIT);
 
@@ -54,21 +57,34 @@ export default function Home(props) {
 
   return (
     <main>
-      <Metatags title="Home Page" description="Get the latest posts on our site" />
+      <Metatags
+        title="Home Page"
+        description="Get the latest posts on our site"
+      />
 
       <div className="card card-info">
-        <h2>💡 Next.js + Firebase - The Full Course</h2>
-        <p>Welcome! This app is built with Next.js and Firebase and is loosely inspired by Dev.to.</p>
-        <p>Sign up for an 👨‍🎤 account, ✍️ write posts, then 💞 heart content created by other users. All public content is server-rendered and search-engine optimized.</p>
+        <h2>Welcome to Devtora,</h2>
+        <p>
+          Your go-to destination for all things tech-related! Devtora is a
+          cutting-edge web platform that brings you the latest news, trends, and
+          updates from the dynamic world of technology.
+        </p>
+        <p>
+          Sign up for an account, write posts, then 💞 content created by other
+          users. All public content is server-rendered and search-engine
+          optimized.
+        </p>
       </div>
-     
+
       <PostFeed posts={posts} />
 
-      {!loading && !postsEnd && <button onClick={getMorePosts}>Load more</button>}
+      {!loading && !postsEnd && (
+        <button onClick={getMorePosts}>Load more</button>
+      )}
 
       <Loader show={loading} />
 
-      {postsEnd && 'You have reached the end!'}
+      {postsEnd && "You have reached the end!"}
     </main>
   );
 }
