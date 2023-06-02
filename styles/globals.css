@@ -111,7 +111,7 @@ code {
   text-decoration: none;
   font-family: 'Noto Sans', sans-serif;
   font-weight: bold;
-  border-radius: 0.25rem;
+  border-radius: 20px;
   cursor: pointer;
   margin: 0.5rem 1rem 0.5rem 0;
 }
@@ -165,6 +165,7 @@ button.btn-logo {
   text-transform: uppercase;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
 }
 
 /* Cards */
@@ -265,8 +266,138 @@ input[type="file"] {
 
 
 
-/* new button on write posts and login*/
+/* new button on login*/
+
+.login-btn {
+  --primary-color: #FF7034;
+  --secondary-color: #fff;
+  --hover-color: #111;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1em 1.8em;
+  background: var(--primary-color);
+  display: flex;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+}
 
 
+.login-btn .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.login-btn .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+.login-btn .arrow::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid var(--secondary-color);
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+.login-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.login-btn:hover .arrow {
+  background: var(--secondary-color);
+}
+
+.login-btn:hover .arrow:before{
+  right: 0;
+}
+
+.checkbox{
+  display: none;
+}
+
+check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+
+.check:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34,50,84,0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: black;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+  opacity: 1;
+}
+
+.check:hover svg {
+  stroke: black;
+}
+
+#cbx:checked + .check svg {
+  stroke: black;
+}
+
+#cbx:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+
+#cbx:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
 
