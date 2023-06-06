@@ -177,6 +177,7 @@ button.btn-logo {
   background-color: var(--color-bg);
   border: 1px solid var(--color-text);
   border-radius: 8px;
+  transition: transform .2s;
 }
 
 .card footer {
@@ -194,6 +195,15 @@ button.btn-logo {
 .card-info {
   color: black;
   background: var(--color-text);
+  transition: transform .3s;
+
+}
+
+.card-info:hover{
+  transform: scale(105%);
+}
+.card:hover{
+  transform: scale(105%);
 }
 
 /* Loader */

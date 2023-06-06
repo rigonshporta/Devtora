@@ -20,6 +20,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+    "/[username]/[slug]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/[username]/[slug].js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -29,11 +34,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/enter": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/enter.js"
     ]
   },
   "ampFirstPages": []
