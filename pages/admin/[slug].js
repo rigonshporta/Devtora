@@ -96,6 +96,7 @@ function PostForm({ defaultValues, postRef, preview }) {
         <ImageUploader />
 
         <textarea
+          className="content-txt"
           name="content"
           ref={register({
             maxLength: { value: 20000, message: "content is too long" },

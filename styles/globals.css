@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-  --color-bg: #eef0f1;
-  --color-text: #08090a;
+  --color-bg: #2f2429;
+  --color-text: #f46d59;
   --color-blue: #3b49df;
   --color-red: #df3b3b;
-  --color-green: #3bdf72;
+  --color-green: #52a83e;
   --color-gray: #b5bdc4;
   --burnt-orange: #FF7034;
 }
@@ -13,7 +13,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   margin-top: 50px;
@@ -44,10 +44,11 @@ img {max-width: 100%;}
 input { 
   display: inline-block; 
   outline: none;
-  border: none;
   font-size: 1.5rem;
   width: 100%;
   padding: 5px 10px;
+  color: black;
+  background-color: var(--color-text);
 }
 
 fieldset {
@@ -65,13 +66,13 @@ code {
 .navbar {
   height: 70px;
   width: 100%;
-  background: white;
+  background: var(--color-bg);
   color: var(--colors-text);
   position: fixed;
   top: 0;
   padding: 0 10vw;
   font-weight: bold;
-  border-bottom: 1px solid var(--color-gray);
+  border-bottom: 1px solid #f46d59;
   z-index: 99;
 }
 
@@ -100,16 +101,16 @@ code {
 /* Buttons */
 
 .btn, button {
-  background-color: var(--color-gray);
+  background-color: var(--color-text);
   border: none;
-  color: var(--color-text);
+  color: black;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
   border-radius: 20px;
   cursor: pointer;
@@ -135,8 +136,8 @@ button[disabled]{
 }
 
 button.btn-blue {
-  background-color: var(--burnt-orange);
-  color: white;
+  background-color: var(--color-text);
+  color: black;
 }
 
 button.btn-red {
@@ -160,7 +161,7 @@ button.btn-google {
 }
 
 button.btn-logo {
-  background-color: var(--color-text);
+  background-color: black;
   color: white;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -173,8 +174,8 @@ button.btn-logo {
 .card {
   padding: 2rem;
   margin: 1rem 0;
-  background-color: white;
-  border: 1px solid var(--color-gray);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text);
   border-radius: 8px;
 }
 
@@ -191,14 +192,14 @@ button.btn-logo {
 }
 
 .card-info {
-  color: white;
-  background: var(--burnt-orange);
+  color: black;
+  background: var(--color-text);
 }
 
 /* Loader */
 
 .loader {
-  border: 10px solid var(--color-bg); 
+  border: 10px solid var(--color-text); 
   border-top: 10px solid var(--color-blue); 
   border-radius: 50%;
   width: 50px;
@@ -269,7 +270,7 @@ input[type="file"] {
 /* new button on login*/
 
 .login-btn {
-  --primary-color: #FF7034;
+  --primary-color: #f46d59;
   --secondary-color: #fff;
   --hover-color: #111;
   --arrow-width: 10px;
@@ -351,7 +352,7 @@ check {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(34,50,84,0.03);
+  background: var(--color-text);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -362,7 +363,7 @@ check {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke: black;
+  stroke: var(--color-text);
   stroke-width: 1.5;
   transform: translate3d(0, 0, 0);
   transition: all 0.2s ease;
@@ -383,11 +384,11 @@ check {
 }
 
 .check:hover svg {
-  stroke: black;
+  stroke: var(--color-text);
 }
 
 #cbx:checked + .check svg {
-  stroke: black;
+  stroke: var(--color-text);
 }
 
 #cbx:checked + .check svg path {
@@ -400,4 +401,11 @@ check {
   transition: all 0.2s linear;
   transition-delay: 0.15s;
 }
-
+.content-txt{
+  border: 1px solid #f46d59;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+::placeholder{
+  color: black;
+}

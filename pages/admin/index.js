@@ -1,15 +1,15 @@
-import styles from '@styles/Admin.module.css';
-import AuthCheck from '@components/AuthCheck';
-import PostFeed from '@components/PostFeed';
-import { UserContext } from '@lib/context';
-import { firestore, auth, serverTimestamp } from '@lib/firebase';
+import styles from "@styles/Admin.module.css";
+import AuthCheck from "@components/AuthCheck";
+import PostFeed from "@components/PostFeed";
+import { UserContext } from "@lib/context";
+import { firestore, auth, serverTimestamp } from "@lib/firebase";
 
-import { useContext, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useContext, useState } from "react";
+import { useRouter } from "next/router";
 
-import { useCollection } from 'react-firebase-hooks/firestore';
-import kebabCase from 'lodash.kebabcase';
-import toast from 'react-hot-toast';
+import { useCollection } from "react-firebase-hooks/firestore";
+import kebabCase from "lodash.kebabcase";
+import toast from "react-hot-toast";
 
 export default function AdminPostsPage(props) {
   return (
@@ -23,8 +23,11 @@ export default function AdminPostsPage(props) {
 }
 
 function PostList() {
-  const ref = firestore.collection('users').doc(auth.currentUser.uid).collection('posts');
-  const query = ref.orderBy('createdAt');
+  const ref = firestore
+    .collection("users")
+    .doc(auth.currentUser.uid)
+    .collection("posts");
+  const query = ref.orderBy("createdAt");
   const [querySnapshot] = useCollection(query);
 
   const posts = querySnapshot?.docs.map((doc) => doc.data());
@@ -40,7 +43,7 @@ function PostList() {
 function CreateNewPost() {
   const router = useRouter();
   const { username } = useContext(UserContext);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   // Ensure slug is URL safe
   const slug = encodeURI(kebabCase(title));
@@ -52,7 +55,11 @@ function CreateNewPost() {
   const createPost = async (e) => {
     e.preventDefault();
     const uid = auth.currentUser.uid;
-    const ref = firestore.collection('users').doc(uid).collection('posts').doc(slug);
+    const ref = firestore
+      .collection("users")
+      .doc(uid)
+      .collection("posts")
+      .doc(slug);
 
     // Tip: give all fields a default value here
     const data = {
@@ -61,7 +68,7 @@ function CreateNewPost() {
       uid,
       username,
       published: false,
-      content: '# hello world!',
+      content: "# hello world!",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
       heartCount: 0,
@@ -69,7 +76,7 @@ function CreateNewPost() {
 
     await ref.set(data);
 
-    toast.success('Post created!');
+    toast.success("Post created!");
 
     // Imperative navigation after doc is set
     router.push(`/admin/${slug}`);
@@ -80,7 +87,7 @@ function CreateNewPost() {
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="My Awesome Article!"
+        placeholder="My Article!"
         className={styles.input}
       />
       <p>
